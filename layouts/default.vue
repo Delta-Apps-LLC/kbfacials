@@ -12,27 +12,29 @@
         </button>
       </v-toolbar-title>
       <v-spacer />
-      <v-btn class="nav-btn" to="/inspire" text>Inspire</v-btn>
+      <v-btn v-if="path === '/'" class="nav-btn" to="/inspire" text>Inspire</v-btn>
+      <v-btn v-else class="nav-btn" to="/" text>Home</v-btn>
     </v-app-bar>
 
-    <v-main >
+    <v-main>
       <v-container>
         <Nuxt />
       </v-container>
     </v-main>
 
-    <v-footer
-      absolute
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+    <Footer />
+
   </v-app>
 </template>
 
 <script>
+import Footer from '~/components/Footer.vue'
 export default {
   name: 'DefaultLayout',
+
+  components: {
+    Footer,
+  },
 
   data () {
     return {
@@ -43,6 +45,12 @@ export default {
   methods: {
     toHome() {
       this.$router.push('/')
+    }
+  },
+
+  computed: {
+    path () {
+      return this.$route.path
     }
   }
 }
