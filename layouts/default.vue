@@ -12,8 +12,12 @@
         </button>
       </v-toolbar-title>
       <v-spacer />
-      <v-btn v-if="path === '/'" class="nav-btn" to="/inspire" text>Inspire</v-btn>
-      <v-btn v-else class="nav-btn" to="/" text>Home</v-btn>
+      <v-btn class="nav-btn" v-if="this.$route.path !== '/'" text to="/">Home</v-btn>
+      <span v-for="(btn, i) in navBtns" :key="i">
+        <v-btn class="nav-btn" :to="btn.to" text>
+          {{btn.text}}
+        </v-btn>
+      </span>
     </v-app-bar>
 
     <v-main>
@@ -38,7 +42,17 @@ export default {
 
   data () {
     return {
-      title: 'Vuetify.js'
+      title: 'kb facials',
+      navBtns: [
+        {
+          text: 'Schedule',
+          to: '/schedule',
+        },
+        {
+          text: 'Contact',
+          to: '/contact',
+        },
+      ]
     }
   },
 
@@ -58,6 +72,10 @@ export default {
 
 <style scoped>
 @import '~/assets/style.css';
+
+.app-bar {
+  background-color: #f8f6f6 !important;
+}
 
 .logo {
   vertical-align: text-top;

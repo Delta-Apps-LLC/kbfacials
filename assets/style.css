@@ -1,3 +1,10 @@
+/*
+    THEME:
+    - black: #373434
+    - white: #f8f6f6
+*/
+
+
 .main {
     background-image: url('~/assets/background2.png');
     background-size: contain;
@@ -5,4 +12,13 @@
 
 .nav-btn {
     height: 60px !important;
+    margin: 0 5px;
+}
+
+.header {
+    color: #373434;
+    font-family: Playfair Display;
+    font-size: 26px;
+    font-weight: bold;
+    display: inline-block;
 }
