@@ -1,0 +1,13 @@
+.main {
+    background-image: url('~/assets/background2.png');
+    background-size: contain;
+}
+
+.main-2 {
+    background-image: url('~/assets/background3.png');
+    background-size: contain;
+}
+
+.nav-btn {
+    height: 60px !important;
+}

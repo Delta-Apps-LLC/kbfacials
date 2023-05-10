@@ -1,5 +1,5 @@
 <template>
-  <v-app class="main">
+  <v-app class="main-2">
     <v-app-bar
       class="app-bar"
       fixed
@@ -12,7 +12,7 @@
         </button>
       </v-toolbar-title>
       <v-spacer />
-      <v-btn class="nav-btn" to="/inspire" text>Inspire</v-btn>
+      <v-btn class="nav-btn" to="/" text>Home</v-btn>
     </v-app-bar>
 
     <v-main >
