@@ -11,7 +11,7 @@ export const mutations = {
 }
 
 export const actions = {
-    async postReview({ commit }, { numStars, title, text, name = 'Anonymous' }) {
+    async postReview({ dispatch }, { numStars, title, text, name = 'Anonymous' }) {
         const { data, error, status } = await SUPABASE.from('reviews')
         .insert({
             numstars: numStars,
@@ -19,10 +19,10 @@ export const actions = {
             text: text,
             author: name,
             date: new Date().toDateString()
-        }).select()
+        })
 
         if (!error) {
-            await commit('setReviews', data)
+            await dispatch('getReviews')
         }
     },
 
