@@ -11,13 +11,13 @@ export const mutations = {
 }
 
 export const actions = {
-    async postReview({ dispatch }, { numStars, title, text, name = 'Anonymous' }) {
+    async postReview({ dispatch }, { numStars, title, text, author = 'Anonymous' }) {
         const { data, error, status } = await SUPABASE.from('reviews')
         .insert({
             numstars: numStars,
             title: title,
             text: text,
-            author: name,
+            author: author,
             date: new Date().toDateString()
         })
 
