@@ -49,9 +49,9 @@ export default {
           to: '/schedule',
         },
         {
-          text: 'Contact',
-          to: '/contact',
-        },
+          text: 'Reviews',
+          to: '/reviews',
+        }
       ]
     }
   },

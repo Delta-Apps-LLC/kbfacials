@@ -1,7 +1,7 @@
 <template>
     <v-row justify="center" align="center">
-        <v-col>
-            <h2>Hi there</h2>
+        <v-col class="text-center">
+            <span class="header">{{contactKami}}</span>
         </v-col>
     </v-row>
 </template>
@@ -12,15 +12,18 @@ export default {
 
     data () {
         return {
+            contactKami: 'To schedule an appointment, text or call Kami at 702-340-0921 to see what\'s available.',
 
         }
-    },
+    }
 }
 </script>
 
 <style scoped>
 @import '~/assets/style.css';
 
-
+.header {
+    width: 550px;
+}
 
 </style>
