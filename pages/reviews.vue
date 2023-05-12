@@ -1,7 +1,7 @@
 <template>
     <v-row justify="center" align="center">
         <v-col class="text-center">
-            <span class="header">Reviews From Our Customers</span>
+            <span class="header">Reviews From Customers</span>
             <hr :style="{'height': '2px', 'border-radius': '5px', 'background-color': '#373434'}" />
             <v-row class="columns-row">
 
@@ -202,8 +202,8 @@ export default {
     margin-right: 5px;
 }
 
-.author-date-row {
-    margin: 5px;
+.basic-subtext {
+    margin: 0 20px;
     font-family: Playfair Display;
     font-style: italic;
     color: #373434;
