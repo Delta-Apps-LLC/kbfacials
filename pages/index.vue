@@ -9,12 +9,16 @@
       <div class="wrapper">
         <div class="service text-left" v-for="(service, i) in services" :key="i" data-aos="zoom-in" data-aos-duration="1000">
           <v-divider />
-          <v-row class="service-title-row">
-            <span class="service-title">{{service.title}}</span>
-            <v-spacer />
-            <span class="service-details">{{service.time}}, {{service.price}}</span>
+          <v-row>
+            <img class="service-img" v-if="i == 0 || i % 2 == 0" :src="require(`~/assets/blobs/${service.src}`)" />
+            <v-col>
+              <span class="service-title">{{service.title}}</span>
+              <v-spacer />
+              <span class="service-details">{{service.time}}, {{service.price}}</span>
+              <p class="service-description" v-html="service.description"></p>
+            </v-col>
+            <img class="service-img" v-if="i != 0 && i % 2 != 0" :src="require(`~/assets/blobs/${service.src}`)" />
           </v-row>
-          <p class="service-description" v-html="service.description"></p>
         </div>
       </div>
 
@@ -94,8 +98,8 @@ export default {
 @import '~/assets/style.css';
 
 .service {
-  margin: 50px auto;
-  width: 50%;
+  margin: 30px auto;
+  width: 65%;
   height: auto;
 }
 
@@ -110,12 +114,16 @@ export default {
 }
 
 .service-description {
-  width: 80%;
+  width: 100%;
   margin: 10px auto;
   font-size: 20px;
   font-family: Playfair Display;
   color: #373434;
   white-space: pre-line;
+}
+
+.service-img {
+  width: 300px;
 }
 
 </style>

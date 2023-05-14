@@ -45,10 +45,6 @@ export default {
       title: 'kb facials',
       navBtns: [
         {
-          text: 'Home-2',
-          to: '/home2'
-        },
-        {
           text: 'Schedule',
           to: '/schedule',
         },
