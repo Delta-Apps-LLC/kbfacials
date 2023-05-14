@@ -23,7 +23,8 @@ export const actions = {
 
         if (!error) {
             await dispatch('getReviews')
-        }
+            return true
+        } else return false
     },
 
     async getReviews({ commit }) {

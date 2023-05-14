@@ -7,12 +7,18 @@
 
                 <!-- Post Review Column -->
                 <v-col :cols="isMobile ? '12' : '4'">
-                    <form class="review-form" data-aos="fade-right" data-aos-duration="1500">
+                    <v-alert
+                        v-model="dialog"
+                        :type="alertType"
+                        :icon="`$${alertType}`"
+                        variant="tonal"
+                    >{{alertText}}</v-alert>
+
+                    <div class="review-form" data-aos="fade-right" data-aos-duration="1500">
                         <span class="basic-title">Leave a Review</span><br>
                         <v-btn icon
                             v-for="i in 5"
                             :key="i"
-                            :rules="[rules.required]"
                         >
                             <v-icon class="star"
                                 size="40"
@@ -27,7 +33,6 @@
                             class="form-field"
                             v-model="text"
                             placeholder="Leave your review..."
-                            :rules="[rules.required]"
                             required
                         ></v-textarea>
                         <input class="form-field" maxlength="40" v-model="author" type="name" name="author" placeholder="Your name" required /><br>
@@ -35,12 +40,13 @@
                             <v-icon>mdi-close</v-icon>
                             &ensp;Clear
                         </v-btn>
-                        <v-btn class="form-btn" type="submit" @click="postReview()" text>
+                        <v-btn class="form-btn" @click="postReview()" text>
                             <v-icon>mdi-send</v-icon>
                             &ensp;Post
                         </v-btn>
-                    </form>
+                    </div>
                 </v-col>
+
 
                 <!-- Reviews Column -->
                 <v-col :cols="isMobile ? '12' : '8'">
@@ -99,6 +105,9 @@ export default {
 
     data () {
         return {
+            alertText: '',
+            alertType: '',
+            dialog: false,
             numStars: 0,
             title: '',
             text: '',
@@ -119,31 +128,63 @@ export default {
 
         async postReview() {
             if (this.validate()) {
-                await this.$store.dispatch('reviews/postReview', {
+                const success = await this.$store.dispatch('reviews/postReview', {
                     numStars: this.numStars,
                     title: this.title,
                     text: this.text,
-                    name: this.author
+                    author: this.author
                 })
+                if (success) {
+                    this.alert({
+                        text: 'Thank you for your review!',
+                        type: 'success'
+                    })
+                } else {
+                    this.alert({
+                        text: 'Something went wrong on our end, please try again.',
+                        type: 'error'
+                    })
+                }
                 this.clearForm()
             }
         },
 
         validate() {
             if (this.numStars === 0) {
-                alert('Please select your star rating.')
+                this.alert({
+                    text: 'Please select your star rating.',
+                    type: 'error'
+                })
                 return false
             } else if (this.title === '') {
-                alert('Please fill in the title.')
+                this.alert({
+                    text: 'Please fill in the title.',
+                    type: 'error'
+                })
                 return false
             } else if (this.text === '') {
-                alert('Please fill in the review text field.')
+                this.alert({
+                    text: 'Please fill in the review text field.',
+                    type: 'error'
+                })
                 return false
             } else if (this.author === '') {
-                alert('Please fill in your name.')
+                this.alert({
+                    text: 'Please fill in your name.',
+                    type: 'error'
+                })
                 return false
             }
             return true
+        },
+
+        alert({text, type}) {
+            this.alertText = text
+            this.alertType = type
+            this.dialog = true
+            setTimeout(() => {
+                this.dialog = false
+            }, 3000);
         },
 
         clearForm() {
