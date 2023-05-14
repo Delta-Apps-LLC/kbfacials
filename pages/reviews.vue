@@ -75,7 +75,12 @@
                         <p class="basic-text">{{rev.text}}</p>
                         <v-divider />
                     </div>
-                    <span class="header" v-if="reviews.length == 0" v-html="noReviews"></span>
+                    <span class="header"
+                        v-if="reviews.length == 0"
+                        v-html="noReviews"
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                    ></span>
                 </v-col>
             </v-row>
         </v-col>

@@ -1,15 +1,19 @@
 <template>
     <v-row class="container" justify="center" align="center">
         <div class="wrapper text-center">
-            <span class="header">{{contactKami}}</span>
+            <span class="header" data-aos="zoom-in" data-aos-duration="1000">
+                {{contactKami}}
+            </span>
             <!-- <span class="coming-soon">{{comingSoon}}</span> -->
         </div>
     </v-row>
 </template>
 
 <script>
+import {aosMixin} from '~/mixins/aos'
 export default {
     name: 'SchedulePage',
+    mixins: ['aosMixin'],
 
     data () {
         return {
