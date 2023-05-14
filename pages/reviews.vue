@@ -1,7 +1,7 @@
 <template>
     <v-row justify="center" align="center">
         <v-col class="text-center">
-            <span class="header">Reviews From Customers</span>
+            <span class="header">Customer Reviews</span>
             <hr :style="{'height': '2px', 'border-radius': '5px', 'background-color': '#373434'}" />
             <v-row class="columns-row">
 
@@ -12,6 +12,7 @@
                         <v-btn icon
                             v-for="i in 5"
                             :key="i"
+                            :rules="[rules.required]"
                         >
                             <v-icon class="star"
                                 size="40"
@@ -29,7 +30,7 @@
                             :rules="[rules.required]"
                             required
                         ></v-textarea>
-                        <input class="form-field" maxlength="40" v-model="author" type="name" name="author" placeholder="Your name" /><br>
+                        <input class="form-field" maxlength="40" v-model="author" type="name" name="author" placeholder="Your name" required /><br>
                         <v-btn class="form-btn" @click="clearForm()" text>
                             <v-icon>mdi-close</v-icon>
                             &ensp;Clear
@@ -74,6 +75,7 @@
                         <p class="basic-text">{{rev.text}}</p>
                         <v-divider />
                     </div>
+                    <span class="header" v-if="reviews.length == 0" v-html="noReviews"></span>
                 </v-col>
             </v-row>
         </v-col>
@@ -99,7 +101,8 @@ export default {
             rules: {
                 required: (value) => !!value || 'This field is required',
             },
-            starIndex: null
+            starIndex: null,
+            noReviews: 'No reviews yet &ndash; be the first to leave one!'
         }
     },
 
@@ -110,11 +113,7 @@ export default {
         },
 
         async postReview() {
-            if (this.numStars === 0) {
-                alert('Please select a star rating.')
-            } else if (this.text === '') {
-                alert('Please fill in the review text box.')
-            } else {
+            if (this.validate()) {
                 await this.$store.dispatch('reviews/postReview', {
                     numStars: this.numStars,
                     title: this.title,
@@ -123,6 +122,23 @@ export default {
                 })
                 this.clearForm()
             }
+        },
+
+        validate() {
+            if (this.numStars === 0) {
+                alert('Please select your star rating.')
+                return false
+            } else if (this.title === '') {
+                alert('Please fill in the title.')
+                return false
+            } else if (this.text === '') {
+                alert('Please fill in the review text field.')
+                return false
+            } else if (this.author === '') {
+                alert('Please fill in your name.')
+                return false
+            }
+            return true
         },
 
         clearForm() {
@@ -140,6 +156,7 @@ export default {
         },
 
         avgStars () {
+            if (this.reviews.length == 0) return 0
             let total = 0
             this.reviews.forEach(element => {
                 total += element.numstars
