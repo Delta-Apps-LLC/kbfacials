@@ -168,7 +168,8 @@ export default {
 }
 
 .service-img {
-  width: 300px;
+  max-width: auto;
+  max-height: 250px;
   margin-top: 20px;
 }
 
