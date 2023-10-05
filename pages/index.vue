@@ -87,18 +87,11 @@ export default {
           description: '$100 for 90 minutes of pampering.',
         },
         {
-          title: 'GlyMed Plus Facial',
+          title: 'GlyMed Plus® Facial',
           time: '60 min',
           price: '$80',
           src: 'glymed.png',
-          description: 'Glycolic facial cleanser, peptide firming cleanser, specialty deep cleansing mask, anti aging mask, peptide or retinol serum, balance beauty oil, repair cream, peptide moisturizer, firming eye cream, SPF, hydrating lip balm.',
-        },
-        {
-          title: 'GlyMed Plus®',
-          time: '5-10 min',
-          price: '$10',
-          src: 'glymed-plus.png',
-          description: 'GlyMed Plus® offers pharmaceutical-grade skin care products that can significantly improve these and other skin concerns:\n<ul><li>Common signs of aging</li><li>Pigmentation issues</li><li>Rosacea</li><li>Sun damage</li><li>Acne</li></ul>I have attended several classes and become a GlyMed Pro. I offer this professional line of skincare as well.',
+          description: 'GlyMed Plus® offers pharmaceutical-grade skin care products that can significantly improve these and other skin concerns:\n<ul><li>Common signs of aging</li><li>Pigmentation issues</li><li>Rosacea</li><li>Sun damage</li><li>Acne</li></ul>I have attended several classes and become a GlyMed Pro. I offer this professional line of skincare as well.<br>Includes:<br>Glycolic facial cleanser, peptide firming cleanser, specialty deep cleansing mask, anti aging mask, peptide or retinol serum, balance beauty oil, repair cream, peptide moisturizer, firming eye cream, SPF, hydrating lip balm.',
         },
         {
           title: 'Chin/Mustache or Nose Wax',
