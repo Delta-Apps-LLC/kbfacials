@@ -4,7 +4,7 @@
       absolute
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>&copy; 2023</span>
       <v-spacer />
       <img src="~/assets/background-trans.png" height="75px" />
       <!-- <v-spacer /> -->
